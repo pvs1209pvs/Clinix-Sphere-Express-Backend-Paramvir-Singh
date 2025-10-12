@@ -1,0 +1,1 @@
+Once inside the directory run `node .` to start the Express.js server.

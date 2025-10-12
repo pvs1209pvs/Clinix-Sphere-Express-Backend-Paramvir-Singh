@@ -73,7 +73,7 @@ function authenticateToken(req, res, next) {
 
     jwt.verify(token, SECRET_KEY, (err, user) => {
         if (err) return res.status(403).json({ message: "Invalid / expired token" });
-        req.user = user; 
+        req.user = user;
         next();
     });
 }
@@ -144,12 +144,6 @@ app.post("/signup/doctor", async (req, res) => {
             { expiresIn: "1h" }
         );
 
-
-        // const token = jwt.sign(
-        //     { id: newUser._id, username: newUser.username },
-        //     SECRET_KEY,
-        //     { expiresIn: "1h" }
-        // );
 
         res.status(200).json({
             message: "User created",
@@ -252,16 +246,11 @@ app.get(
     authenticateToken,
     async (req, res) => {
 
-        console.log(`gettig appts`)
-        console.table(req.user)
-        
-
         try {
 
             const { docId, patId } = req.query
 
             if (docId) {
-                // console.log(`doc appts ${}`)
                 return res.status(200).json(await Appointment.find({
                     byDoctor: docId,
                     status: "pending"
@@ -270,9 +259,7 @@ app.get(
 
             if (patId) {
                 console.log("Getting appts for patients " + patId)
-                return res.status(200).json(await Appointment.find(
-                    { ofPatient: patId }
-                ))
+                return res.status(200).json(await Appointment.find({ ofPatient: patId }))
             }
 
             if (!docId && !patId) {
