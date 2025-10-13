@@ -78,10 +78,12 @@ function authenticateToken(req, res, next) {
     });
 }
 
-app.listen(
-    PORT,
-    () => console.log("hello world")
-)
+module.exports = app
+
+// app.listen(
+//     PORT,
+//     () => console.log("hello world")
+// )
 
 // auth doctor
 
