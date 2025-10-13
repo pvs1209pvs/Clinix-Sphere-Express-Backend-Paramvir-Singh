@@ -88,10 +88,10 @@ module.exports = app
 
 // testing
 
-app.get("/helloworld",async (req, res) => {
+app.get("/",async (req, res) => {
 
     return res.status(200).json({
-        message:"hello world"
+        message:"Clinin Sphere backend created using Express.js by PARAMVIR SINGH"
     })
 })
 
