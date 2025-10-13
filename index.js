@@ -85,6 +85,16 @@ module.exports = app
 //     () => console.log("hello world")
 // )
 
+
+// testing
+
+app.get("/helloworld",async (req, res) => {
+
+    return res.status(200).json({
+        message:"hello world"
+    })
+})
+
 // auth doctor
 
 app.post("/login/doctor", async (req, res) => {
