@@ -13,7 +13,12 @@ const uri = "mongodb+srv://pvs1209_db_user:WJMiLFzPnw8Nh3kS@cluster0.hcce21h.mon
 const SECRET_KEY = "secret_key";
 
 mongoose
-    .connect(uri)
+    .connect(uri, 
+        {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }
+)
     .then(() => console.log("Connected to MongoDB"))
     .catch(err => console.error(err));
 
@@ -80,18 +85,18 @@ function authenticateToken(req, res, next) {
 
 module.exports = app
 
-// app.listen(
-//     PORT,
-//     () => console.log("hello world")
-// )
+app.listen(
+    PORT,
+    () => console.log("hello world")
+)
 
 
 // testing
 
-app.get("/",async (req, res) => {
+app.get("/", async (req, res) => {
 
     return res.status(200).json({
-        message:"Clinin Sphere backend created using Express.js by PARAMVIR SINGH"
+        message: "Clinin Sphere backend created using Express.js by PARAMVIR SINGH"
     })
 })
 
