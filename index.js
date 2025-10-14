@@ -12,30 +12,19 @@ const PORT = 8080
 const uri = "mongodb+srv://pvs1209_db_user:WJMiLFzPnw8Nh3kS@cluster0.hcce21h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const SECRET_KEY = "secret_key";
 
-const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
-
-// mongoose
-//     .connect(uri, 
-//         {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true,
-//     }
-// )
-//     .then(() => console.log("Connected to MongoDB"))
-//     .catch(err => console.error(err));
 
 async function run() {
-    try {
-        // Create a Mongoose client with a MongoClientOptions object to set the Stable API version
-        await mongoose.connect(uri, clientOptions);
-        await mongoose.connection.db.admin().command({ ping: 1 });
-        console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    } finally {
-        // Ensures that the client will close when you finish/error
-        await mongoose.disconnect();
-    }
+    await mongoose
+        .connect(uri,
+            {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+            }
+        )
+        .then(() => console.log("Connected to MongoDB"))
+        .catch(err => console.error(err));
 }
-run().catch(console.dir);
+run()
 
 const doctorSchema = new mongoose.Schema({
     name: { type: String, required: true },
