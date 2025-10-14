@@ -14,13 +14,12 @@ const SECRET_KEY = "secret_key";
 
 
 async function run() {
-    await mongoose
-        .connect(uri,
-            {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-            }
-        )
+    await mongoose.connect(uri,
+        {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        }
+    )
         .then(() => console.log("Connected to MongoDB"))
         .catch(err => console.error(err));
 }
@@ -100,7 +99,7 @@ module.exports = app
 app.get("/", async (req, res) => {
 
     return res.status(200).json({
-        message: "Clinin Sphere backend created using Express.js by PARAMVIR SINGH"
+        message: "Clinix Sphere backend created using Express.js by PARAMVIR SINGH"
     })
 })
 
