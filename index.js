@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors())
 
 const PORT = 8080
-const uri = "mongodb+srv://pvs1209_db_user:WJMiLFzPnw8Nh3kS@cluster0.hcce21h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const uri = "mongodb+srv://pvs1209_db_user:WJMiLFzPnw8Nh3kS@cluster0.hcce21h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&directConnection=true";
 const SECRET_KEY = "secret_key";
 
 
