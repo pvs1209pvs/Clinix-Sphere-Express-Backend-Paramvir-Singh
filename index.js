@@ -100,10 +100,10 @@ function authenticateToken(req, res, next) {
 
 module.exports = app
 
-app.listen(
-    PORT,
-    () => console.log("hello world")
-)
+// app.listen(
+//     PORT,
+//     () => console.log("hello world")
+// )
 
 
 // testing
