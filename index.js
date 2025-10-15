@@ -110,7 +110,7 @@ app.post("/login/doctor", async (req, res) => {
     const { username, password } = req.body;
 
     try {
-        const user = await User.findOne({ username });
+        const user = await User.findOne({ username, role:"doctor" });
         if (!user) return res.status(401).json({ message: "Invalid credentials" });
 
         const isMatch = await bcrypt.compare(password, user.password);
@@ -140,7 +140,7 @@ app.post("/signup/doctor", async (req, res) => {
     try {
         const { username, password, name, address } = req.body;
 
-        const existingUser = await User.findOne({ username });
+        const existingUser = await User.findOne({ username, role:"doctor" });
         if (existingUser) return res.status(400).json({ message: "Username already exists" });
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -182,14 +182,14 @@ app.post("/signup/patient", async (req, res) => {
     try {
         const { username, password, name, address } = req.body;
 
-        const existingUser = await User.findOne({ username });
+        const existingUser = await User.findOne({ username, role:"patient" });
         if (existingUser) return res.status(400).json({ message: "Username already exists" });
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const patient = new Paitent({ name, address })
         await patient.save()
-        
+
         console.log("new patient")
         console.table(patient)
 
@@ -230,7 +230,7 @@ app.post("/login/patient", async (req, res) => {
     const { username, password } = req.body;
 
     try {
-        const user = await User.findOne({ username });
+        const user = await User.findOne({ username, role: "patient" });
         if (!user) return res.status(401).json({ message: "Invalid credentials" });
 
         const isMatch = await bcrypt.compare(password, user.password);
