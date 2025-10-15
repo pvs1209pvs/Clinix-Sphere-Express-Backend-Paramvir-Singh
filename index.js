@@ -59,7 +59,7 @@ const prescriptionSchema = new mongoose.Schema({
 });
 
 const userSchema = new mongoose.Schema({
-    username: { type: String, required: true, unique: true },
+    username: { type: String, required: true },
     password: { type: String, required: true },
     role: { type: String, required: true }, // patient or doctor
     refId: { type: mongoose.Schema.Types.ObjectId, } // refers to doctor or patient
@@ -141,6 +141,8 @@ app.post("/signup/doctor", async (req, res) => {
         const { username, password, name, address } = req.body;
 
         const existingUser = await User.findOne({ username, role:"doctor" });
+        console.log("user doctor signup")
+        console.log(existingUser)
         if (existingUser) return res.status(400).json({ message: "Username already exists" });
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -173,7 +175,7 @@ app.post("/signup/doctor", async (req, res) => {
 
     } catch (err) {
         console.log(err)
-        res.status(500);
+        res.status(500).json({ message: err.message });
     }
 })
 
