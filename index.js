@@ -122,7 +122,6 @@ app.post("/login/doctor", async (req, res) => {
             expiresIn: "1h"
         });
 
-
         res
             .status(200)
             .json({

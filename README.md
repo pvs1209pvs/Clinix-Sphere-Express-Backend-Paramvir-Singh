@@ -6,18 +6,19 @@ https://clinix-sphere-express-backend-param.vercel.app/
 
 <h4>Sample screenshots</h4>
 
+
+<h4>Sample Screenshots</h4>
 <p float="left" align="center">
-<img src="demo/1.png" width=25% height=25%>
-<img src="demo/2.png" width=25% height=25%>
-<img src="demo/3.png" width=25% height=25%>
-<img src="demo/4.png" width=25% height=25%>
-<img src="demo/5.png" width=25% height=25%>
+<img src="demo/react-1.png" width=25% height=25%>
+<img src="demo/react-2.png" width=25% height=25%>
+<img src="demo/react-3.png" width=25% height=25%>
+<img src="demo/react-4.png" width=25% height=25%>
 </p>
+
 <p float="left" align="center">
-<img src="demo/6.png" width=40% height=40%>
-<img src="demo/7.png" width=40% height=40%>
-<img src="demo/8.png" width=40% height=40%>
-<img src="demo/9.png" width=40% height=40%>
-<img src="demo/9.png" width=40% height=40%>
-<img src="demo/10.png" width=40% height=40%>
+<img src="demo/native-1.png" width=25% height=25%>
+<img src="demo/native-2.png" width=25% height=25%>
+<img src="demo/native-3.png" width=25% height=25%>
+<img src="demo/native-4.png" width=25% height=25%>
+<img src="demo/native-5.png" width=25% height=25%>
 </p>
