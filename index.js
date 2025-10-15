@@ -189,6 +189,9 @@ app.post("/signup/patient", async (req, res) => {
 
         const patient = new Paitent({ name, address })
         await patient.save()
+        
+        console.log("new patient")
+        console.table(patient)
 
         const user = new User({
             username,
