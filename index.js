@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors())
 
 const PORT = 8080
-const uri = "mongodb+srv://pvs1209_db_user:WJMiLFzPnw8Nh3kS@cluster0.hcce21h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&directConnection=true&socketTimeoutMS=90000";
+const uri = "mongodb+srv://pvs1209_db_user:WJMiLFzPnw8Nh3kS@cluster0.hcce21h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&socketTimeoutMS=90000";
 const SECRET_KEY = "secret_key";
 
 
@@ -88,10 +88,10 @@ function authenticateToken(req, res, next) {
 
 module.exports = app
 
-// app.listen(
-//     PORT,
-//     () => console.log("hello world")
-// )
+app.listen(
+    PORT,
+    () => console.log("hello world")
+)
 
 
 // testing
