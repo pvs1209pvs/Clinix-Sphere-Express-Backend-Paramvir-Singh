@@ -132,7 +132,7 @@ app.post("/login/doctor", async (req, res) => {
 
     } catch (err) {
         console.log(err.message)
-        res.status(500).json({ error: err.message });
+        res.status(500).json({ err });
     }
 });
 
@@ -172,7 +172,7 @@ app.post("/signup/doctor", async (req, res) => {
         });
 
     } catch (err) {
-        res.status(500).json({ error: error });
+        res.status(500).json({ err});
     }
 })
 
@@ -221,7 +221,7 @@ app.post("/signup/patient", async (req, res) => {
         });
 
     } catch (err) {
-        res.status(500).json({ error});
+        res.status(500).json({ err});
     }
 })
 
@@ -257,7 +257,7 @@ app.post("/login/patient", async (req, res) => {
         });
     } catch (err) {
         console.log(err.message)
-        res.status(500).json({ error: err.message });
+        res.status(500).json({ err });
     }
 })
 
