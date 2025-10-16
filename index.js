@@ -20,7 +20,17 @@ async function run() {
             useUnifiedTopology: true,
         }
     )
-        .then(() => console.log("Connected to MongoDB"))
+        .then(() => {
+            console.log("Connected to MongoDB")
+
+            module.exports = app
+
+            app.listen(
+                PORT,
+                () => console.log("hello world")
+            )
+
+        })
         .catch(err => console.error(err));
 }
 run()
@@ -86,13 +96,6 @@ function authenticateToken(req, res, next) {
     });
 }
 
-module.exports = app
-
-app.listen(
-    PORT,
-    () => console.log("hello world")
-)
-
 
 // testing
 
@@ -110,7 +113,7 @@ app.post("/login/doctor", async (req, res) => {
     const { username, password } = req.body;
 
     try {
-        const user = await User.findOne({ username, role:"doctor" });
+        const user = await User.findOne({ username, role: "doctor" });
         if (!user) return res.status(401).json({ message: "Invalid credentials" });
 
         const isMatch = await bcrypt.compare(password, user.password);
@@ -140,7 +143,7 @@ app.post("/signup/doctor", async (req, res) => {
     try {
         const { username, password, name, address } = req.body;
 
-        const existingUser = await User.findOne({ username, role:"doctor" });
+        const existingUser = await User.findOne({ username, role: "doctor" });
         console.log("user doctor signup")
         console.log(existingUser)
         if (existingUser) return res.status(400).json({ message: "Username already exists" });
@@ -185,7 +188,7 @@ app.post("/signup/patient", async (req, res) => {
     try {
         const { username, password, name, address } = req.body;
 
-        const existingUser = await User.findOne({ username, role:"patient" });
+        const existingUser = await User.findOne({ username, role: "patient" });
         if (existingUser) return res.status(400).json({ message: "Username already exists" });
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -224,7 +227,7 @@ app.post("/signup/patient", async (req, res) => {
         });
 
     } catch (err) {
-        res.status(500).json({ err});
+        res.status(500).json({ err });
     }
 })
 
