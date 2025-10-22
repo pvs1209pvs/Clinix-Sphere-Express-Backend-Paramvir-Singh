@@ -21,7 +21,7 @@ router.post("/login/doctor", async (req, res) => {
 
         const doctor = await Doctor.findById(user.refId)
 
-        const token = jwt.sign({ id: user._id, username: user.username }, process.env.SECRET_KEY, {
+        const token = jwt.sign({ id: user._id, username: user.username }, process.env.process.env.SECRET_KEY, {
             expiresIn: "1h"
         });
 
@@ -64,7 +64,7 @@ router.post("/signup/doctor", async (req, res) => {
 
         const token = jwt.sign(
             { id: doctor._id, username: newUser.username },
-            SECRET_KEY,
+            process.env.SECRET_KEY,
             { expiresIn: "1h" }
         );
 
@@ -113,7 +113,7 @@ router.post("/signup/patient", async (req, res) => {
                 patientName: patient.name,
                 patientId: patient._id
             },
-            SECRET_KEY,
+            process.env.SECRET_KEY,
             { expiresIn: "1h" }
         );
 
@@ -149,7 +149,7 @@ router.post("/login/patient", async (req, res) => {
                 patientName: patient.name,
                 patientId: patient._id
             },
-            SECRET_KEY, {
+            process.env.SECRET_KEY, {
             expiresIn: "1h"
         });
 
